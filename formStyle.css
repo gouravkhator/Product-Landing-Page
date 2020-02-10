@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+    background: rgb(165, 241, 165);
+    overflow: hidden;
+}
+.form{
+    width: 250px;
+    height: 40px;
+    margin:40vh auto;
+    position: relative;
+}
+
+.field{
+    position: absolute;
+    top:0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    background: white;
+}
+
+.active{
+    transform: translateY(0px);
+    opacity: 1;
+    pointer-events: all;
+    transition: all 0.5s ease-in-out;
+}
+.inactive{
+    transform: translateY(50px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+input{
+    outline: none;
+    border: none;
+    margin: 5px;
+    font-size:20px;
+}
+
+.thanks-field{
+    width: 250px;
+    height: 40px;
+}
+.fa-arrow-down{
+    cursor: pointer;
+}
+
+@keyframes rotateField{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(45deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+

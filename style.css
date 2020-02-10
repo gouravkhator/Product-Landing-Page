@@ -1,0 +1,441 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+    background: #000;
+    overflow-x: hidden;
+}
+/*Nav*/
+nav{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: black;
+    letter-spacing: 1px;
+    position: sticky;
+    top:0;
+    z-index: 100;
+    width:100%;
+    height:8vh;
+}
+
+.logo{
+    font-size:22px;
+}
+nav a{
+    color: rgba(224, 155, 90, 0.952);
+    text-transform: uppercase;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    border-radius: 5px;
+    padding: 7px;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    margin:10px;
+}
+
+nav li::after{
+    width: 0%;
+}
+
+nav li:hover::after{
+    position: absolute;
+    content: '';
+    height: 2px;
+    bottom:-5px;
+    background: rgb(182, 143, 143);
+    left:0;
+    animation: bottomLine 1s ease-in-out forwards;
+}
+
+@keyframes bottomLine{
+    0%{
+        width: 0%;
+    }
+    25%{
+        width: 25%;
+    }
+    50%{
+        width: 50%;
+    }
+    75%{
+        width: 75%;
+    }
+    100%{
+        width:100%;
+    }
+}
+
+.burger{
+    display:none;
+}
+
+/*Main Section*/
+#mainSection{
+    width:100vw;
+    height:92vh;
+    padding:0;
+    position: relative;
+    overflow: hidden;
+}
+#mainSection #bgVideo{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 92vh;
+    z-index:-100;
+    transform: scale(1.2); /*as the video wasn't taking whole screen*/
+}
+#mainSection #mainSectionHead{
+    font-size:2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    word-spacing: 10px;
+    margin:20px;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+#mainSection .typewriteDiv{
+    width: 20vw;
+    font-size:22px;
+    margin:20px;
+    position: absolute;
+    top:12%;
+    left:0;
+}
+
+#mainSection span.typewriter{
+    position: relative;
+}
+#mainSection span.typewriter::after{
+    content: '';
+    width: 2px;
+    height: 30px;
+    background: #000;;
+    position: absolute;
+    top:-2px;
+    right: -5px;
+    opacity: 1;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+/*Sections*/
+.problemsSection,.servicesSection{
+    width: 100vw;
+    height: auto;
+    text-align: center;
+    margin: 20px 10px 0px;
+    color: rgb(19, 30, 61);
+    background: linear-gradient(to top,rgb(88, 57, 42),rgb(243, 186, 169)); 
+    padding: 20px;
+    border-radius: 20px 10px;
+}
+
+
+.sectionContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sectionItem{
+    width: 20rem;
+    height:20rem;
+    backface-visibility: hidden;
+    position: relative;
+    margin:20px;
+    border: 2px solid rgb(39, 5, 5);
+}
+.sectionItem:hover .front{
+    transform: perspective(600px) rotateY(-180deg);
+    z-index: -1;
+}
+.sectionItem:hover .back{
+    transform: perspective(600px) rotateY(0deg);
+    z-index: 0;
+}
+.sectionItem .front{
+    transform: perspective(600px) rotateY(0deg);
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+}
+.sectionItem .back{
+    transform: perspective(600px) rotateY(180deg);
+    position: absolute;
+    top:0;
+    left:0;
+    background:white;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.servicesSection .sectionItem .front{
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+.servicesSection .sectionItem:hover .front{
+    transform: scale(0);
+    opacity: 0;
+}
+.servicesSection .sectionItem .back{
+    transition: all 0.5s ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+}
+.servicesSection .sectionItem:hover .back{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.sectionImg{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.sectionHead{
+    position: relative;
+}
+
+.sectionHead::before{
+    content: '';
+    width: 7%;
+    height:8px;
+    position: absolute;
+    bottom:-10px;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background: rgb(90, 23, 7);
+}
+.sectionHead::after{
+    content: '';
+    width: 20%;
+    height:5px;
+    position: absolute;
+    bottom:-8px;
+    left:50%;
+    transform: translateX(-50%);
+    background: rgb(70, 2, 2);
+}
+.btn{
+    width: 50%;
+    padding: 1rem;
+    background: linear-gradient(to right,brown, rgb(85, 14, 5));
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+.btn:hover{
+    opacity: 0.8;
+}
+
+/*Footer*/
+footer{
+    margin: 0;
+    width: 100vw;
+    height: 300px;
+}
+#waveImg{
+    width: 100%;
+    height: 60%;
+}
+
+.socialMedia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i.fa{
+    color: white;
+    margin: 20px;
+    cursor: pointer;
+}
+
+#contactBtn{
+    width: 15vw;
+    font-size:18px;
+}
+
+@media(max-width:1300px){
+    /*Video*/
+    #mainSection #bgVideo{
+        transform: scale(5);
+    }
+}
+@media(max-width:768px){
+    /*Nav*/
+    .nav-links{
+        width:30%;
+        height:92vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(140deg,rgb(63, 2, 2),#000);
+        position: absolute;
+        top:8vh;
+        right:0;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+        z-index:10;
+    }
+
+    .burger{
+        display: inline;
+        cursor: pointer;
+    }
+    .line1,.line2,.line3{
+        width: 25px;
+        height: 3px;
+        background: rgba(224, 155, 90, 0.952);
+        margin:5px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    @keyframes line1Anim{
+        from{
+            transform:translateY(0px) rotate(0deg);
+        }
+        to{
+            transform:translateY(5px) rotate(-45deg);
+        }
+    }
+
+    @keyframes line2Anim{
+        from{
+            opacity: 1;
+        }
+        to{
+            opacity: 0 ;
+        }
+    }
+
+    @keyframes line3Anim{
+        from{
+            transform:translateY(0px) rotate(0deg);
+        }
+        to{
+            transform:translateY(-12px) rotate(45deg);
+        }
+    }
+
+    .nav-links li{
+        opacity: 0;
+    }
+
+    .navUlAppear{
+        transform: translateX(0%);
+    }
+
+    @keyframes navLink {
+        from{
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    /*Main Section*/
+    #mainSection #bgVideo{
+        transform: scale(3);
+    }
+
+    /*Section*/
+    .sectionContainer{
+        flex-direction: column;
+    }
+
+    /*Footer*/
+    #contactBtn{
+        width: 20vw;
+        font-size:16px;
+    }
+}
+
+@media(max-width:500px){
+    /*Main Section*/
+    #mainSection #bgVideo{
+        transform: scale(5);
+    }
+}
+
+@media(max-width:300px){
+    /*Nav*/
+    .logo{
+        font-size:16px;
+    }
+
+    .nav-links{
+        width: 50vw;
+    }
+
+    /*Main Section*/
+    #mainSection .typewriteDiv{
+        top:20%;
+    }
+
+    #mainSectionHead{
+        font-size:14px;
+    }
+
+    /*Sections*/
+    .sectionItem{
+        width:90vw;
+    }
+}
+
+@media(max-height:600px){
+    #mainSection .typewriteDiv{
+        top:20%;
+    }
+}
+
+/*Scroll Appear*/
+.sectionHead,#mainSectionHead{
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
